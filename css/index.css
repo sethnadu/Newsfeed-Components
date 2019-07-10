@@ -152,7 +152,16 @@
   background-color: white;
 }
 .article-open {
-  height: 100%;
+  height: auto;
+  transition: height 0.8s ease-out;
+  height: 500px;
+}
+.article-close {
+  height: 50px;
+  transition: height 0.8s ease-out;
+}
+.hide {
+  display: none;
 }
 .header {
   width: 100%;

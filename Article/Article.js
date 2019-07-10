@@ -158,8 +158,8 @@ function createArticle(title, date, firstParagraph, secondParagraph, thirdParagr
 
  //add textContent
 
- buttonOpen.textContent = "Expand";
- buttonClose.textContent = "Close";
+ buttonOpen.textContent = "Click to Expand";
+ buttonClose.textContent = "Click to Close";
  titleArticle.textContent = title;
  dateArticle.textContent = date;
  oneParagraph.textContent = firstParagraph;
@@ -169,18 +169,20 @@ function createArticle(title, date, firstParagraph, secondParagraph, thirdParagr
  // click toggle
 
  buttons.addEventListener("click", () => {
-   article.classList.toggle('article-open')
    buttonClose.classList.toggle("hide");
    buttonOpen.classList.toggle("hide");
 
  })
 
  buttonOpen.addEventListener("click",() => {
-  TweenLite.from(".article", 2, { ease: Circ.easeOut, scaleY: 0 });
+  article.classList.add('article-open')
+  article.classList.remove('article-close')
  })
 
 
  buttonClose.addEventListener("click",() => {
+  article.classList.add('article-close')
+  article.classList.remove('article-open')
   
 })
 
