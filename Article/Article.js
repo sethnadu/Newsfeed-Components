@@ -85,7 +85,16 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
-  }
+  },
+  {
+    title: 'White Night: Dresden Quote',
+    date: 'June 10th, 2019',
+    firstParagraph: `'Anger is just anger. It isn't good. It isn't bad. It just is. What you do with it is what matters. It's like anything else. You can use it to build or to destroy. You just have to make the choice.' `,
+
+    secondParagraph: ` 'Constructive anger,' the demon said, her voice dripping sarcasm.`,
+
+    thirdParagraph: `'Also known as passion,' I said quietly. 'Passion has overthrown tyrants and freed prisoners and slaves. Passion has brought justice where there was savagery. Passion has created freedom where there was nothing but fear. Passion has helped souls rise from the ashes of their horrible lives and build something better, stronger, more beautiful.' `
+  },
 ];
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
@@ -98,7 +107,7 @@ const data = [
 
     <span class='expandButton'></span>
   </div>
-
+  
   Hint: You will need to use createElement more than once here!
 
   Your function should take either an object as it's one argument, or 5 separate arguments mapping to each peice of the data object above.
@@ -112,3 +121,50 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new artible
 
 */
+const articles = document.querySelector(".articles");
+
+
+data.map(each => {
+  articles.appendChild(createArticle(each.title, each.date, each.firstParagraph, each.secondParagraph, each.thirdParagraph));
+})
+
+function createArticle(title, date, firstParagraph, secondParagraph, thirdParagraph) {
+  const article = document.createElement('div');
+  const titleArticle = document.createElement('h2');
+  const dateArticle = document.createElement("p");
+  const oneParagraph = document.createElement("p");
+  const twoParagraph = document.createElement("p");
+  const threeParagraph = document.createElement("p");
+  const button = document.createElement("span");
+
+  //add to article
+  article.appendChild(titleArticle);
+  article.appendChild(dateArticle);
+  article.appendChild(oneParagraph);
+  article.appendChild(twoParagraph);
+  article.appendChild(threeParagraph);
+  article.appendChild(button);
+
+ //add classes to elements
+
+ article.classList.add('article');
+ dateArticle.classList.add('date');
+ button.classList.add('expandButton');
+
+ //add textContent
+
+ button.textContent = "expand";
+ titleArticle.textContent = title;
+ dateArticle.textContent = date;
+ oneParagraph.textContent = firstParagraph;
+ twoParagraph.textContent = secondParagraph;
+ threeParagraph.textContent = thirdParagraph;
+
+ // click toggle
+
+ button.addEventListener("click", () => {
+   article.classList.toggle('article-open')
+ })
+
+ return article;
+}
