@@ -2,16 +2,17 @@
   margin-top: 95px;
 }
 .article {
-  margin: 20px 10%; 
+  margin: 20px 10%;
   padding: 0 20px 25px;
   border: 1px solid lightgrey;
   border-radius: 10px;
   background-color: white;
   position: relative;
   height: 50px;
-  overflow: hidden;
+  overflow: hidden; 
   box-shadow: 2px 2px 2px lightgrey;
-   
+  
+  
   h2 {
     font-size: 28px;
     padding: 0; 
@@ -42,9 +43,19 @@
 }
 
 .article-open {
-  height: 400px;
+  height: auto;
+  transition: height 0.8s ease-out;
+  height: 500px;
 }
 
+.article-close {
+  height: 50px;
+  transition: height 0.8s ease-out;
+}
+
+.hide {
+  display: none;
+}
 
 
 
