@@ -36,6 +36,7 @@ let menuItems = [
 */
 
 const menuButton = document.querySelector(".menu-button");
+const menuButtonClose = document.querySelector(".menu-button-close");
 const header = document.querySelector(".header");
 
 header.appendChild(createNav(menuItems));
@@ -81,7 +82,28 @@ function createNav(menuItems) {
 
   menuButton.addEventListener("click", () => {
     menu.classList.toggle("menu--open")
+    menuButtonClose.classList.toggle("hide");
+    menuButton.classList.toggle("hide");
+    TweenLite.to(".articles", 1, { ease: Power0.easeNone, x: 300 });
+    TweenLite.from(".menu", 1, { ease: Power0.easeNone, x: -300 });
+    document.querySelectorAll(".article").forEach(article => {
+      article.style.width = "57%";
+    })
+   
   });
+
+  menuButtonClose.addEventListener("click", () => {
+    menu.classList.toggle("menu--open")
+    menuButtonClose.classList.toggle("hide");
+    menuButton.classList.toggle("hide");
+    TweenLite.to(".articles", 1, { ease: Power0.easeNone, x: 0});
+    
+    document.querySelectorAll(".article").forEach(article => {
+      article.style.width = "80%";
+    })
+   
+  });
+
 
 
   return menu;

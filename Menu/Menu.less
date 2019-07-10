@@ -4,12 +4,18 @@
   cursor: pointer;
 }
 
+.menu-button-close {
+  position: absolute;
+  left: 20px;
+  cursor: pointer;
+}
+
 .menu {
   display: none;
   position: fixed;
   top: 75px;
   left: 0;
-  width: 350px;
+  max-width: 350px;
   height: 100vh; /* This give the height 100% of the screen or, '100% of View Height' */
   background-color: #81C784;
   border: 1px solid #004D40;
@@ -27,4 +33,8 @@
 
 .menu--open {
   display: block;
+}
+
+.hide {
+  display: none;
 }

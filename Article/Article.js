@@ -164,7 +164,10 @@ function createArticle(title, date, firstParagraph, secondParagraph, thirdParagr
 
  button.addEventListener("click", () => {
    article.classList.toggle('article-open')
+   
  })
 
  return article;
 }
+
+
