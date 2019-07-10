@@ -135,7 +135,9 @@ function createArticle(title, date, firstParagraph, secondParagraph, thirdParagr
   const oneParagraph = document.createElement("p");
   const twoParagraph = document.createElement("p");
   const threeParagraph = document.createElement("p");
-  const button = document.createElement("span");
+  const buttons = document.createElement("div")
+  const buttonOpen = document.createElement("span");
+  const buttonClose = document.createElement("span");
 
   //add to article
   article.appendChild(titleArticle);
@@ -143,17 +145,21 @@ function createArticle(title, date, firstParagraph, secondParagraph, thirdParagr
   article.appendChild(oneParagraph);
   article.appendChild(twoParagraph);
   article.appendChild(threeParagraph);
-  article.appendChild(button);
+  article.appendChild(buttons);
+  buttons.appendChild(buttonOpen);
+  buttons.appendChild(buttonClose);
 
  //add classes to elements
 
  article.classList.add('article');
  dateArticle.classList.add('date');
- button.classList.add('expandButton');
+ buttonOpen.classList.add('expandButton');
+ buttonClose.classList.add('expandButton','hide');
 
  //add textContent
 
- button.textContent = "expand";
+ buttonOpen.textContent = "Expand";
+ buttonClose.textContent = "Close";
  titleArticle.textContent = title;
  dateArticle.textContent = date;
  oneParagraph.textContent = firstParagraph;
@@ -162,10 +168,23 @@ function createArticle(title, date, firstParagraph, secondParagraph, thirdParagr
 
  // click toggle
 
- button.addEventListener("click", () => {
+ buttons.addEventListener("click", () => {
    article.classList.toggle('article-open')
-   
+   buttonClose.classList.toggle("hide");
+   buttonOpen.classList.toggle("hide");
+
  })
+
+ buttonOpen.addEventListener("click",() => {
+  TweenLite.from(".article", 2, { ease: Circ.easeOut, scaleY: 0 });
+ })
+
+
+ buttonClose.addEventListener("click",() => {
+  
+})
+
+
 
  return article;
 }
